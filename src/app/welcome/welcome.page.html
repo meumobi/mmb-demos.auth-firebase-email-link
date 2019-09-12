@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>welcome</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item  color="primary">
+    <p>Welcome to our app! For your safefy please re-type your email address and Confirm Your Sign-In</p>
+  </ion-item>
+  <ion-input type="text" placeholder="E-mail" [(ngModel)]="email"></ion-input>
+  <ion-button expand="full" color="success" (click)="confirmSignIn()">Confirm Your Sign-in</ion-button>
+</ion-content>

@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-input type="text" placeholder="E-mail" [(ngModel)]="email"></ion-input>
+  <ion-button *ngIf="!emailSent" expand="full" color="success" (click)="signIn()">Sign-in</ion-button>
+  <ion-item *ngIf="emailSent" color="success">
+        <p>A link to access the app was send to <b>{{email}}</b>. Check your email on this device. If you not get the email, request to <b>Resend</b>, and make sure **server.email** is not on Spam.</p>
+  </ion-item>
+  <ion-button *ngIf="emailSent" expand="full" (click)="signIn()">Resend</ion-button>
+</ion-content>
