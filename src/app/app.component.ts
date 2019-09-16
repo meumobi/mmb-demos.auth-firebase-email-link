@@ -30,10 +30,12 @@ export class AppComponent {
     this.authService.getAuthStateObserver()
     .subscribe(
       auth => {
-        console.log(this.router.url);
-        // if (!auth && this.router.url) {
-        //   this.router.navigate(['/login']);
-        // }
+        if (!auth) {
+          if (this.router.url.split('?')[0]  === '/welcome') {
+            return;
+          }
+          this.router.navigate(['/login']);
+       }
       }
     );
   }
