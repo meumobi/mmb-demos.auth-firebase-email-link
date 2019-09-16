@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
 export class LoginPage implements OnInit {
   email: string;
   emailSent = false;
+  error = null;
 
   constructor(
     private authService: AuthService
@@ -18,9 +19,14 @@ export class LoginPage implements OnInit {
   }
 
   signIn() {
+    this.emailSent = false;
+    this.error = null;
     this.authService.signIn(this.email)
     .then(
       () => this.emailSent = true
+    )
+    .catch(
+      error => this.error = error
     );
   }
 }

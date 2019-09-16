@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(public afAuth: AngularFireAuth) {}
+
+  constructor(
+    public afAuth: AngularFireAuth
+  ) {
+    this.afAuth.auth.useDeviceLanguage();
+  }
 
   public signIn(email: string): Promise<any> {
     const actionCodeSettings = {
@@ -22,5 +28,10 @@ export class AuthService {
   public signOut() {
     return this.afAuth.auth.signOut();
   }
+
+  public getAuthStateObserver(): Observable<any> {
+    return this.afAuth.authState;
+  }
+
 }
 

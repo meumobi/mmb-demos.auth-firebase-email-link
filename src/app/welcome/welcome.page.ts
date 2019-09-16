@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class WelcomePage implements OnInit {
   email: string;
   url: string;
+  error = null;
 
   constructor(
     private authService: AuthService,
@@ -21,12 +22,13 @@ export class WelcomePage implements OnInit {
   }
 
   confirmSignIn() {
+    this.error = null;
     this.authService.confirmSignIn(this.email, this.url)
     .then(
       () => this.router.navigate(['/home'])
-    ).catch(
-      () => this.router.navigate(['/login'])
+    )
+    .catch(
+      error => this.error = error
     );
   }
-
 }

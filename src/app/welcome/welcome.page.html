@@ -8,5 +8,8 @@
     <p>Welcome to our app! For your safefy please re-type your email address and Confirm Your Sign-In</p>
   </ion-item>
   <ion-input type="text" placeholder="E-mail" [(ngModel)]="email"></ion-input>
-  <ion-button expand="full" color="success" (click)="confirmSignIn()">Confirm Your Sign-in</ion-button>
+  <ion-button expand="full" [disabled]="!email" color="success" (click)="confirmSignIn()">Confirm Your Sign-in</ion-button>
+  <ion-item *ngIf="error" color="danger">
+    <p>{{error.message}}</p>
+  </ion-item>
 </ion-content>
